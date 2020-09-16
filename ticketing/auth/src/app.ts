@@ -16,7 +16,7 @@ app.use(json());
 app.use(
   cookieSession({
     signed: false, // disabled encryte
-    secure: true, // only https connection
+    secure: process.env.NODE_ENV !== 'test', // only https connection
   })
 );
 app.use(currentUserRouter);
