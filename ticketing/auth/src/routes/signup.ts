@@ -17,7 +17,6 @@ router.post(
   validateRequest,
   async (req: Request, res: Response) => {
     const { email, password } = req.body;
-    console.log(email, password);
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       throw new BadRequestError('Email is use!');
