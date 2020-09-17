@@ -13,4 +13,8 @@ spec:
           - path: /api/users/?(.*)
             backend:
               serviceName: auth-srv
+              servicePort: 3001
+          - path: /?(.*)
+            backend:
+              serviceName: client-srv
               servicePort: 3000
