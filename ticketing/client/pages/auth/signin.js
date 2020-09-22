@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import Router from 'next/router';
-import useRequest from '../../hooks/use-request';
 
-const signup = () => {
+import useRequest from '../../hooks/use-request';
+import * as actionCreator from '../../store/action';
+const signup = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { doRequest, errors } = useRequest({
@@ -46,5 +48,16 @@ const signup = () => {
     </form>
   );
 };
-
+// const mapStateToProps = (state) => {
+//   return {
+//     isAuthencated: state.auth.userId,
+//     authRedirectPath: state.auth.authRedirectPath,
+//   };
+// };
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onAuth: (email, password) =>
+//       dispatch(actionCreator.auth(email, password, false)),
+//   };
+// };
 export default signup;

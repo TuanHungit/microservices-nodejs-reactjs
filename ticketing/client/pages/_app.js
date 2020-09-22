@@ -1,13 +1,17 @@
+import { Provider } from 'react-redux';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import buildClient from '../api/build-client';
 import Header from '../component/header';
-
+import store from '../store/index';
 const AppComponent = ({ Component, pageProps, currentUser }) => {
   return (
+    //<Provider store={store}>
     <div>
       <Header currentUser={currentUser} />
       <Component {...pageProps} />
     </div>
+    //  </Provider>
   );
 };
 
