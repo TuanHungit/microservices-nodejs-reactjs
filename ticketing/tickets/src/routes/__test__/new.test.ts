@@ -20,6 +20,38 @@ it('return a status other than 401 if the user is signed in!', async () => {
   console.log(response.status);
   expect(response.status).not.toEqual(400);
 });
-it('return an error if an invalid title is provided', async () => {});
-it('return an error if an invalid prices is provided', async () => {});
+it('return an error if an invalid title is provided', async () => {
+  await request(app)
+    .post('/api/tickets')
+    .set('Cookie', global.signup())
+    .send({
+      title: 10,
+      price: 10,
+    })
+    .expect(400);
+  await request(app)
+    .post('/api/tickets')
+    .set('Cookie', global.signup())
+    .send({
+      price: 10,
+    })
+    .expect(400);
+});
+it('return an error if an invalid prices is provided', async () => {
+  await request(app)
+    .post('/api/tickets')
+    .set('Cookie', global.signup())
+    .send({
+      title: 'qweqw',
+      price: -10,
+    })
+    .expect(400);
+  await request(app)
+    .post('/api/tickets')
+    .set('Cookie', global.signup())
+    .send({
+      title: 'qweqw',
+    })
+    .expect(400);
+});
 it('create a valid ticket with valid inputs', async () => {});
