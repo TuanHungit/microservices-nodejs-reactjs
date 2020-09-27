@@ -24,11 +24,8 @@ router.post(
       userId: req.currentUser!.id,
     });
     await ticketCreated.save();
-    res.status(200).send({});
+    res.status(201).send(ticketCreated);
   }
 );
-router.get('/api/tickets', (req: Request, res: Response) => {
-  res.status(200).send('Hi!');
-});
 
 export { router as createTicketRouter };

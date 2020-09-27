@@ -6,7 +6,8 @@ import { errorHandler, NotFoundError } from '@thticket/common';
 import { currentUser } from '@thticket/common';
 
 import { createTicketRouter } from './routes/new';
-
+import { showNewRouter } from './routes/show';
+import { showAllTicketRouter } from './routes/index';
 const app = express();
 app.set('trust proxy', true);
 app.use(json());
@@ -18,6 +19,8 @@ app.use(
 );
 app.use(currentUser);
 app.use(createTicketRouter);
+app.use(showNewRouter);
+app.use(showAllTicketRouter);
 app.all('*', async () => {
   throw new NotFoundError();
 });
