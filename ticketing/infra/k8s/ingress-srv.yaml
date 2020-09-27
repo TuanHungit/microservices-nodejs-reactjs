@@ -18,3 +18,7 @@ spec:
             backend:
               serviceName: client-srv
               servicePort: 3000
+          - path: /api/tickets/?(.*)
+            backend:
+              serviceName: tickets-srv
+              servicePort: 3002

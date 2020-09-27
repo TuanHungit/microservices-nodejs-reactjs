@@ -19,8 +19,8 @@ const start = async () => {
   } catch (err) {
     console.error(err);
   }
-  app.listen(3001, () => {
-    console.log('[auth-service]: listening on port 3001!');
+  app.listen(3002, () => {
+    console.log('[tickets-service]: listening on port 3002!');
   });
 };
 start();
