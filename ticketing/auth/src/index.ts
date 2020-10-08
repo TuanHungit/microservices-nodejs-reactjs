@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 
+//const result = require('dotenv').config({ path: '.env' });
+
+//console.log(result.error);
 import { app } from './app';
 
 const start = async () => {
@@ -9,6 +12,10 @@ const start = async () => {
   if (!process.env.MONGO_URL) {
     throw new Error('MONGO_URL must be defined!');
   }
+  // const DB = process.env.DATABASE.replace(
+  //   '<PASSWORD>',
+  //   process.env.DATABASE_PASSWORD!
+  // );
   try {
     await mongoose.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
